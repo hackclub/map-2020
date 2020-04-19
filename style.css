@@ -1,0 +1,50 @@
+font-face {
+  font-family: 'Phantom Sans';
+  src: url('https://hackclub.com/fonts/Phantom_Sans_0.6/Regular.woff')
+      format('woff'),
+    url('https://hackclub.com/fonts/Phantom_Sans_0.6/Regular.woff2')
+      format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Phantom Sans';
+  src: url('https://hackclub.com/fonts/Phantom_Sans_0.6/Bold.woff')
+      format('woff'),
+    url('https://hackclub.com/fonts/Phantom_Sans_0.6/Bold.woff2')
+      format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  font-family: "Phantom Sans", system-ui, Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+  }
+}
+
+#banner {
+  background-color: #ec3750;
+  color: #fff;
+  pointer-events: none;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  max-width: calc(100% - 1.5rem);
+  text-align: center;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  opacity: 0;
+  -webkit-transition: opacity .25s ease-out;
+  transition: opacity .25s ease-out;
+}
