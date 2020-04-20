@@ -1,3 +1,4 @@
+/*
 font-face {
   font-family: 'Phantom Sans';
   src: url('https://hackclub.com/fonts/Phantom_Sans_0.6/Regular.woff')
@@ -8,6 +9,7 @@ font-face {
   font-style: normal;
   font-display: swap;
 }
+*/
 @font-face {
   font-family: 'Phantom Sans';
   src: url('https://hackclub.com/fonts/Phantom_Sans_0.6/Bold.woff')
@@ -21,13 +23,8 @@ font-face {
 
 body {
   margin: 0;
+  background-color: #252429;
   font-family: "Phantom Sans", system-ui, Roboto, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1e1e1e;
-  }
 }
 
 svg {
@@ -46,12 +43,15 @@ svg {
   position: absolute;
   top: 1rem;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
   transform: translateX(-50%);
   opacity: 0;
-  -webkit-transition: opacity .25s ease-out;
   transition: opacity .25s ease-out;
+}
+
+.segment {
+  stroke: #f9fafc;
+  stroke-width: 1px;
+  fill: #e0e6ed;
 }
 
 .layer {

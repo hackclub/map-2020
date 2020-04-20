@@ -16,8 +16,8 @@ const oceanFill = svg
   .attr('id', 'ocean-fill')
   .attr('cx', '75%')
   .attr('cy', '25%')
-oceanFill.append('stop').attr('offset', '5%').attr('stop-color', '#ddf')
-oceanFill.append('stop').attr('offset', '100%').attr('stop-color', '#9ab')
+oceanFill.append('stop').attr('offset', '10%').attr('stop-color', '#5bc0de')
+oceanFill.append('stop').attr('offset', '100%').attr('stop-color', '#338eda')
 svg
   .append('circle')
   .attr('class', 'layer')
@@ -38,13 +38,13 @@ const globeHighlight = svg
 globeHighlight
   .append('stop')
   .attr('offset', '5%')
-  .attr('stop-color', '#ffd')
-  .attr('stop-opacity', '0.6')
+  .attr('stop-color', '#dff')
+  .attr('stop-opacity', '0.5')
 globeHighlight
   .append('stop')
   .attr('offset', '100%')
-  .attr('stop-color', '#ba9')
-  .attr('stop-opacity', '0.2')
+  .attr('stop-color', '#9ab')
+  .attr('stop-opacity', '0.0625')
 svg
   .append('circle')
   .attr('class', 'layer')
@@ -156,12 +156,8 @@ d3.json(
     .append('path')
     .attr('class', 'segment')
     .attr('d', path)
-    .style('stroke', '#aaa')
-    .style('stroke-width', '1px')
-    .style('fill', '#e5e5e5')
 })
 
-// Import clubs
 d3.json(
   'https://api2.hackclub.com/v0/Operations/Clubs/?select=%7B%22fields%22:%5B%22Name%22,%22Latitude%22,%22Longitude%22,%22Customized%20Name%22%5D,%22filterByFormula%22:%22AND(%7BRejected%7D=0,%7BDummy%7D=0,%7BDropped%7D=0)%22%7D'
 )
@@ -183,7 +179,6 @@ d3.json(
   })
 
 // Draw club markers
-// City markers
 function drawMarkers() {
   const markers = markerGroup.selectAll('circle').data(locations)
   markers
