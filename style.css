@@ -30,6 +30,10 @@ body {
   }
 }
 
+svg {
+  cursor: move;
+}
+
 #banner {
   background-color: #ec3750;
   color: #fff;
@@ -44,7 +48,16 @@ body {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  transform: translateX(-50%);
   opacity: 0;
   -webkit-transition: opacity .25s ease-out;
   transition: opacity .25s ease-out;
+}
+
+.layer {
+  pointer-events: none;
+}
+
+#markers circle {
+  opacity: 0.75;
 }

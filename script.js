@@ -20,13 +20,13 @@ oceanFill.append('stop').attr('offset', '5%').attr('stop-color', '#ddf')
 oceanFill.append('stop').attr('offset', '100%').attr('stop-color', '#9ab')
 svg
   .append('circle')
+  .attr('class', 'layer')
   .attr('cx', size[0])
   .attr('cy', size[1])
   .attr('r', initialScale)
-  .style('pointer-events', 'none')
   .style('fill', 'url(#ocean-fill)')
 
-const featureGroup = svg.append('g')
+const featureGroup = svg.append('g').attr('id', 'features')
 const render = () => svg.selectAll('.segment').attr('d', path)
 
 const globeHighlight = svg
@@ -47,10 +47,10 @@ globeHighlight
   .attr('stop-opacity', '0.2')
 svg
   .append('circle')
+  .attr('class', 'layer')
   .attr('cx', size[0])
   .attr('cy', size[1])
   .attr('r', initialScale)
-  .style('pointer-events', 'none')
   .style('fill', 'url(#globe-highlight)')
 
 const globeShading = svg
@@ -71,13 +71,13 @@ globeShading
   .attr('stop-opacity', '0.3')
 svg
   .append('circle')
+  .attr('class', 'layer')
   .attr('cx', size[0])
   .attr('cy', size[1])
   .attr('r', initialScale)
-  .style('pointer-events', 'none')
   .style('fill', 'url(#globe-shading)')
 
-const markerGroup = svg.append('g')
+const markerGroup = svg.append('g').attr('id', 'markers')
 
 // Rotation + interactivity
 const rotationDelay = 3000
@@ -139,8 +139,9 @@ svg
     d3.zoom().on('zoom', () => {
       const newScale = initialScale * d3.event.transform.k
       projection.scale(newScale)
-      d3.selectAll('circle').attr('r', newScale)
+      d3.selectAll('.layer').attr('r', newScale)
       render()
+      drawMarkers()
     })
   )
 
@@ -182,21 +183,20 @@ d3.json(
   })
 
 // Draw club markers
+// City markers
 function drawMarkers() {
   const markers = markerGroup.selectAll('circle').data(locations)
   markers
     .enter()
     .append('circle')
     .merge(markers)
+    .attr('r', 6)
     .attr('cx', ({ lng, lat }) => projection([lng, lat])[0])
     .attr('cy', ({ lng, lat }) => projection([lng, lat])[1])
     .attr('fill', ({ lng, lat }) => {
-      const coordinate = [lng, lat]
-      gdistance = d3.geoDistance(coordinate, projection.invert(size))
+      gdistance = d3.geoDistance([lng, lat], projection.invert(size))
       return gdistance > 1.625 ? 'none' : '#ec3750'
     })
-    .attr('r', 6)
-    .style('opacity', 0.75)
     .on('mouseenter', (club) => {
       d3.select('#banner').text(club.name).style('opacity', 1)
     })
