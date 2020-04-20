@@ -48,6 +48,13 @@ svg {
   transition: opacity .25s ease-out;
 }
 
+@media (max-width: 32em) {
+  #banner {
+    top: auto;
+    bottom: 1rem;
+  }
+}
+
 .segment {
   stroke: #f9fafc;
   stroke-width: 1px;
