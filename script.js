@@ -86,7 +86,7 @@ let lastTime = d3.now()
 function degPerMs() {
   // rotate faster when zoomed out,
   // rotate slower when zoomed in
-  return 2 / projection.scale()
+  return 3 / projection.scale()
 }
 let rotate0, coords0
 
