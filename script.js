@@ -80,7 +80,7 @@ svg
 const markerGroup = svg.append('g').attr('id', 'markers')
 
 // Rotation + interactivity
-const rotationDelay = 3000
+const rotationDelay = 2000
 const autorotate = d3.timer(rotate)
 let lastTime = d3.now()
 function degPerMs() {
@@ -90,7 +90,7 @@ function degPerMs() {
 }
 let rotate0, coords0
 
-function startRotation(delay) {
+function startRotation() {
   autorotate.restart(rotate, rotationDelay)
 }
 
@@ -125,6 +125,7 @@ svg
         coords0 = coords()
       })
       .on('drag', () => {
+        stopRotation()
         const coords1 = coords()
         projection.rotate([
           rotate0[0] + coords1[0] - coords0[0],
