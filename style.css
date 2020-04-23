@@ -25,6 +25,7 @@ body {
   margin: 0;
   background-color: #252429;
   font-family: "Phantom Sans", system-ui, Roboto, sans-serif;
+  overflow: hidden;
 }
 
 svg {
